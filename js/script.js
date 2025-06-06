@@ -50,5 +50,48 @@ ObtenerIntegrantes();
 
 
 
+//Proceso para agregar unh nuevo integrante
+const modal = document.getElementById("mdAgregar"); //cuadro de dialogo
+const btnAgregar = document.getElementById("btnAgregar"); //Boton para agregar registro
+const btnCerrra = document.getElementById("btnCerrar"); //Boton para cerrar registro
+
+
+btnAgregar.addEventListener("click", ()=>{
+    modal.showModal(); //abrir el modal al hacer clic en el boton
+});
+
+
+btnCerrar.addEventListener("click", ()=>{
+    modal.close();
+});
+
+//Agregar nuevo integrante desde el formulario 
+document.getElementById("frmAgregar").addEventListener("submit", async e => {
+    e.preventDefault();//"e" representa a "submit". evita que el formulario se envie de un solo.
+
+
+    //Capturara los valores del formulario
+    const Nombre = document.getElementById("txtNombre").value.trim();
+    const Apellido = document.getElementById("txtApellido").value.trim();
+    const Correo = document.getElementById("txtEmail").value.trim();
+
+
+    //Validacion basica 
+    if(!Nombre || !Apellido || !Correo){
+        alert("ingrese los valroes correctamente");
+        return; //Para evitar que el codigo se siga ejecutando
+    }
+
+    //Llamar a la API para enviar el registro
+    const respuesta = await fetch(API_URL, {
+        method: "POST",
+    });
+});
+
+
+
+
+
+
 
 
